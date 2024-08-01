@@ -4,7 +4,14 @@ import EventModel from "../models/Event";
 import { Request, Response } from "express";
 
 export const bookTickets = async (req: Request, res: Response) => {
-  const { userId, eventId, tickets } = req.body;
+  const { name, email, phoneNumber, userId, eventId, tickets } = req.body;
+  //checking if the user exists or not
+  let user = await UserModel.findOne({ email });
+
+  if (!user) {
+    user = new UserModel({ name, email, phoneNumber });
+    await user.save();
+  }
 
   if (tickets > 15) {
     return res.status(400).json({
@@ -27,9 +34,9 @@ export const bookTickets = async (req: Request, res: Response) => {
         .json({ success: false, message: "Not enough tickets available." });
     }
 
-    const newBooking = new BookingModel({ userId, eventId, tickets });
+    const newBooking = new BookingModel({ userId: user._id, eventId, tickets });
     await newBooking.save();
-
+    // Update the total number of tickets available for the event
     event.totalTickets -= tickets;
     await event.save();
 
@@ -117,6 +124,47 @@ export const printTicket = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: "Error printing ticket",
+      details: error,
+    });
+  }
+};
+export const getAllBookings = async (req: Request, res: Response) => {
+  try {
+    const bookings = await BookingModel.find().populate("eventId", "name date");
+    res.status(200).json({
+      success: true,
+      message: "Bookings retrieved successfully",
+      data: bookings,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching bookings",
+      details: error,
+    });
+  }
+};
+
+export const getBookingById = async (req: Request, res: Response) => {
+  try {
+    const booking = await BookingModel.findById(req.params.id).populate(
+      "eventId",
+      "name date"
+    );
+    if (!booking) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Booking not found" });
+    }
+    res.status(200).json({
+      success: true,
+      message: "Booking retrieved successfully",
+      data: booking,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching booking",
       details: error,
     });
   }
