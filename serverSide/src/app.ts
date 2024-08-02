@@ -11,9 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://event-booking-nap-queens-frontend.vercel.app/"],
+    origin: [
+      "https://event-booking-nap-queens-frontend-perzi0ns-projects.vercel.app/",
+    ],
     methods: ["POST", "GET", "DELETE"],
-    credentials: true
+    credentials: true,
   })
 );
 mongoose
@@ -29,6 +31,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 app.get("/", (req, res) => {
-  res.json("hello world!!")
+  res.json("hello world!")
+  res.status(200).send("OK");
 })
 export default app;
