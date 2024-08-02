@@ -61,10 +61,12 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const findBookingsByEmail = async (req: Request, res: Response) => {
   const { email } = req.params;
-
+  const decodedEmail = decodeURIComponent(email);
   try {
-    const user = await UserModel.findOne({ email });
-    if (!user) {
+    const user = await UserModel.findOne({ email: decodedEmail });
+    console.log(user);
+    if (!user || user == null) {
+      console.warn(`Warning: User with email ${decodedEmail} not found`);
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
@@ -88,3 +90,26 @@ export const findBookingsByEmail = async (req: Request, res: Response) => {
       });
   }
 };
+
+export const getUserByIdAndBookings = async (req: Request, res: Response) => {
+  const {userId} = req.params;
+  try{
+    const user = await UserModel.findById(userId);
+    if(!user){
+      return res.status(404).json({success: false, message: "User not found"});
+    }
+    const bookings = await BookingModel.find({userId: user._id}).populate("eventId");
+    res.status(200).json({
+      success: true,
+      message: "All bookings found successfully",
+      data: {user, bookings}
+    })
+  } catch( error){
+    console.error("Error in fetching the details")
+    res.status(500).json({
+      success: false,
+      message: "some error occured",
+      details: error,
+    })
+  }
+}

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BookingForm = () => {
   const { eventId } = useParams(); //fetching the EventId from the parameters in the URL
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -46,7 +46,7 @@ const BookingForm = () => {
             Name
           </label>
           <input
-            className="w-full p-2 rounded"
+            className="w-full text-black p-2 rounded"
             type="text"
             id="name"
             name="name"
@@ -60,7 +60,7 @@ const BookingForm = () => {
             Email
           </label>
           <input
-            className="w-full p-2 rounded"
+            className="w-full text-black p-2 rounded"
             type="email"
             id="email"
             name="email"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getEvents } from "../api/api";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
@@ -32,7 +33,7 @@ const AllEvents = () => {
   }, []);
 
   if (loading)
-    return <div className="text-[3xl] animate-bounce">Loading...</div>;
+    return <div className="text-[3xl] animate-bounce"><Loading /></div>;
   if (error) return <div>Error: {error}</div>;
 
   return (

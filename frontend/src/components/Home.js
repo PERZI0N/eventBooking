@@ -13,13 +13,23 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(email);
+      const encodedEmail = encodeURIComponent(email);
       const response = await axios.get(
-        `http://localhost:3000/bookings/${email}` // Update endpoint as per your backend
+        `http://localhost:3000/users/email/${encodedEmail}` // Updated endpoint
       );
+      if (response.data.data == null) {
+        window.alert("no such user found");
+      }
       const userId = response.data.data.user._id;
       navigate(`/user/${userId}/bookings`);
     } catch (error) {
-      console.error("Error finding user:", error);
+      if (error.response && error.response.status === 404) {
+        window.alert("User not found");
+      } else {
+        console.error("Error finding user:", error);
+        window.alert("An error occurred while fetching user data.");
+      }
     }
   };
 
@@ -29,12 +39,12 @@ const Home = () => {
         Welcome to the Event Booking Management System
       </h1>
       <div className="mt-12 flex gap-[2rem]">
-        <button className="bg-third p-2 rounded-full hover:bg-second hover:text-white transition-colors duration-300">
+        <button className="bg-second p-4 px-12 rounded-full hover:bg-third hover:text-white transition-colors duration-300">
           <a href="/allEvents">All Events</a>
         </button>
       </div>
       <div>
-        <h1 className="text-[3rem] mb-8">Enter Your Email</h1>
+        <h1 className="text-[2rem] w-[50vh] flex justify-center mb-8">Enter Your Email</h1>
         <form
           className="bg-second p-6 rounded-xl shadow-lg w-full max-w-lg"
           onSubmit={handleSubmit}
@@ -49,6 +59,7 @@ const Home = () => {
               id="email"
               name="email"
               value={email}
+              placeholder="Example@something.com"
               onChange={handleChange}
               required
             />

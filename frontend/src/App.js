@@ -5,6 +5,7 @@ import AllEvents from "./pages/AllEvents";
 import UserBooking from "./pages/UserBooking";
 import BookingForm from "./pages/BookingForm";
 import Confirmation from "./components/Confirmation";
+import BookingDeleted from "./components/BookingDeleted";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/bookings/:eventId" element={<BookingForm />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/user/:userId/bookings" element={<UserBooking />} />
+          <Route path="/bookingDeleted" element={<BookingDeleted />} />
         </Routes>
       </Router>
     </div>
