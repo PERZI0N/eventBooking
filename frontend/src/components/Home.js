@@ -16,7 +16,7 @@ const Home = () => {
       console.log(email);
       const encodedEmail = encodeURIComponent(email);
       const response = await axios.get(
-        `https://event-booking-nap-queens.vercel.app/users/email/${encodedEmail}` // Updated endpoint
+        `https://event-booking-server-blush.vercel.app/users/email/${encodedEmail}` // Updated endpoint
       );
       if (response.data.data == null) {
         window.alert("no such user found");

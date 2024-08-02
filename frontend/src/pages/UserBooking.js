@@ -14,7 +14,7 @@ const UserBookings = () => {
     const fetchBookings = async () => {
       try {
         const response = await axios.get(
-          `https://event-booking-nap-queens.vercel.app/users/${userId}/bookings`
+          `https://event-booking-server-blush.vercel.app/users/${userId}/bookings`
         );
         setUser(response.data.data.user);
         setBookings(response.data.data.bookings);
@@ -33,7 +33,7 @@ const UserBookings = () => {
     try {
       // Fetch the user's bookings
       const currUserResponse = await axios.get(
-        `https://event-booking-nap-queens.vercel.app/users/${userId}/bookings`
+        `https://event-booking-server-blush.vercel.app/users/${userId}/bookings`
       );
 
       // Extract bookings from the response
@@ -45,7 +45,7 @@ const UserBookings = () => {
 
         // Delete the booking
         await axios.delete(
-          `https://event-booking-nap-queens.vercel.app/bookings/${bookingId}`
+          `https://event-booking-server-blush.vercel.app/bookings/${bookingId}`
         );
 
         console.log("The booking has been deleted");
