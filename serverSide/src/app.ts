@@ -11,9 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "https://event-booking-nap-queens-frontend-perzi0ns-projects.vercel.app/",
-    ],
+    origin: ["https://event-booking-frontend-alpha.vercel.app"],
     methods: ["POST", "GET", "DELETE"],
     credentials: true,
   })
