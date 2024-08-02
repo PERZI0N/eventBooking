@@ -31,7 +31,7 @@ app.use(userRoutes);
 //   console.log(`Server running on port ${port}`);
 // });
 app.get("/", (req, res) => {
-  res.json("hello world!")
+  res.json("hello world!!!")
   res.status(200).send("OK");
 })
 export default app;
