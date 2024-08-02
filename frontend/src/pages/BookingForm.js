@@ -23,10 +23,13 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/bookings", {
-        ...formData,
-        eventId,
-      });
+      const response = await axios.post(
+        "https://event-booking-nap-queens-frontend.vercel.app/bookings",
+        {
+          ...formData,
+          eventId,
+        }
+      );
       console.log("Booking response:", response.data);
       navigate("/confirmation"); // Navigate to a confirmation page or wherever you want
     } catch (error) {

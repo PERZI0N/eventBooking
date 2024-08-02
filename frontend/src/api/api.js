@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000"; // Replace with your API base URL
+const API_URL = "https://event-booking-nap-queens-frontend.vercel.app"; // Replace with your API base URL
 
 export const getEvents = async () => {
   try {

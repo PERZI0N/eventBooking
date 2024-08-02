@@ -33,7 +33,7 @@ const UserBookings = () => {
     try {
       // Fetch the user's bookings
       const currUserResponse = await axios.get(
-        `http://localhost:3000/users/${userId}/bookings`
+        `https://event-booking-nap-queens-frontend.vercel.app/users/${userId}/bookings`
       );
 
       // Extract bookings from the response
@@ -44,7 +44,7 @@ const UserBookings = () => {
         const bookingId = bookings[0]._id; // Example: delete the first booking; adjust as needed
 
         // Delete the booking
-        await axios.delete(`http://localhost:3000/bookings/${bookingId}`);
+        await axios.delete(`https://event-booking-nap-queens-frontend.vercel.app/bookings/${bookingId}`);
 
         console.log("The booking has been deleted");
         navigate("/bookingDeleted");
