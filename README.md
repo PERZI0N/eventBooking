@@ -17,7 +17,7 @@ The Event Booking System Backend provides RESTful API endpoints to manage events
 
 ## Features
 
-- User registration and authentication
+- User registration
 - Event creation and management
 - Booking creation and management
 - Secure API with proper error handling
