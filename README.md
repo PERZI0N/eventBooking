@@ -10,10 +10,6 @@ Welcome to the Event Booking System Backend repository. This project is designed
 - [Setup](#setup)
 - [Usage](#usage)
 - [Endpoints](#endpoints)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Overview
 
@@ -46,7 +42,18 @@ The Event Booking System Backend provides RESTful API endpoints to manage events
 
 ### Installation
 
-1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/event-booking-backend.git
-   cd event-booking-backend
+   git clone https://github.com/PERZI0N/eventBooking-NapQueens.git
+   cd eventBooking-NapQueens
+
+   cd serverside
+   npm start
+
+```bash
+   cd frontend
+   npm start
+
+
+
+### Endpoints
+
