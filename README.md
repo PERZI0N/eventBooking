@@ -56,14 +56,14 @@ The Event Booking System Backend provides RESTful API endpoints to manage events
 
 ### Endpoints
 
-/events - for getting and posting events
-/event/:id - To do CRUD operations on a specific ID
+- /events - for getting and posting events
+- /event/:id - To do CRUD operations on a specific ID
 
-/bookings - For all the bookings in the database
-/boooking/:id - For deleting, updating and printing ticket of a specific ID
+- /bookings - For all the bookings in the database
+- /boooking/:id - For deleting, updating and printing ticket of a specific ID
 
-/users - For all the users
-/user/:id - For all operations on a specific user
-/user/:email - For searching the user by Email 
+- /users - For all the users
+- /user/:id - For all operations on a specific user
+- /user/:email - For searching the user by Email 
 
 
