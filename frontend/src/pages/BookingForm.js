@@ -24,7 +24,7 @@ const BookingForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://event-booking-nap-queens-frontend.vercel.app/bookings",
+        "https://event-booking-nap-queens.vercel.app/bookings",
         {
           ...formData,
           eventId,
