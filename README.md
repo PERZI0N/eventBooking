@@ -40,7 +40,7 @@ The Event Booking System Backend provides RESTful API endpoints to manage events
 - MongoDB (local or Atlas)
 - npm or yarn
 
-### Installation
+## Installation
 
    ```bash
    git clone https://github.com/PERZI0N/eventBooking-NapQueens.git
@@ -54,7 +54,7 @@ The Event Booking System Backend provides RESTful API endpoints to manage events
    npm start
 ```
 
-### Endpoints
+## Endpoints
 
 - /events - for getting and posting events
 - /event/:id - To do CRUD operations on a specific ID
