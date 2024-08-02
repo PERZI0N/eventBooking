@@ -26,10 +26,10 @@ app.use(eventRoutes);
 app.use(bookingRoutes);
 app.use(userRoutes);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// const port = 3000;
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
 app.get("/", (req, res) => {
   res.json("hello world!")
   res.status(200).send("OK");
